@@ -38,6 +38,7 @@ ICONS = {
 
 st.write("BASE_DIR:", BASE_DIR)
 st.write("ICON_DIR exists:", os.path.exists(ICON_DIR))
+st.write("PROJECT_ROOT:", PROJECT_ROOT)
 st.write("menu.png exists:", os.path.exists(ICONS["menu"]))
 st.write(
     "files in ICON_DIR:", os.listdir(ICON_DIR) if os.path.exists(ICON_DIR) else "NO DIR"
