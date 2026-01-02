@@ -77,26 +77,19 @@ def normalize_by_prefix(token, keywords):
     """
     Normalisasi dengan prefix, jadi huruf setelah base bakal dihapus
     """
-    norm_token = None
+    norm_token = token
     for kw in keywords:
         cond = token.startswith(kw) and token != kw and norm_token == None
-
-        if token.startswith(kw) and token != kw and norm_token == None:
+        cond_norm = (len(kw) > len(norm_token)) or (token == norm_token)
+        # if token.startswith(kw) and token != kw and token == norm_token:
+        # norm_token = kw
+        if token.startswith(kw) and token != kw and cond_norm:
             print(f"before kw : {kw}")
             print(f"norm_token : {norm_token}, {cond}")
             print(f"\nterpisah cond 1\n")
             norm_token = kw
             print(f"after norm_token : {norm_token}")
-        elif norm_token:
-            if token.startswith(kw) and token != kw and (len(kw) > len(norm_token)):
-                print(f"before kw : {kw}")
-                print(f"norm_token : {norm_token}, {cond}")
-                print("\n\nbener terjadi cond 2")
-                norm_token = kw
-                print(f"after norm_token : {norm_token}")
-    if norm_token:
-        return norm_token
-    return token
+    return norm_token
 
 
 def normalize_text(text, keywords):
