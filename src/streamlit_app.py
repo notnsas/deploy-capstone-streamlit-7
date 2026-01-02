@@ -43,6 +43,10 @@ st.write("menu.png exists:", os.path.exists(ICONS["menu"]))
 st.write(
     "files in ICON_DIR:", os.listdir(ICON_DIR) if os.path.exists(ICON_DIR) else "NO DIR"
 )
+st.write(
+    "files in app/:",
+    os.listdir(PROJECT_ROOT) if os.path.exists(PROJECT_ROOT) else "NO DIR",
+)
 
 
 def get_img_as_base64(file_path):
