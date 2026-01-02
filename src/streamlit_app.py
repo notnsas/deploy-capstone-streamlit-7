@@ -13,7 +13,9 @@ import os
 # ==========================================
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ICON_DIR = os.path.join(BASE_DIR, "icons")
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
+ICON_DIR = os.path.join(PROJECT_ROOT, "icons")
 
 # Ensure you have these files in your 'icons/' folder
 # I have mapped generic names to specific usage
