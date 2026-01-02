@@ -84,7 +84,7 @@ def normalize_by_prefix(token, keywords):
         # if token.startswith(kw) and token != kw and token == norm_token:
         # norm_token = kw
         if token.startswith(kw) and token != kw and cond_norm:
-            print(f"before kw : {kw}")
+            print(f"before kws : {kw}")
             print(f"norm_token : {norm_token}, {cond}")
             print(f"\nterpisah cond 1\n")
             norm_token = kw
