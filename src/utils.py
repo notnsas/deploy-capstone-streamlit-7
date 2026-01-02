@@ -79,16 +79,10 @@ def normalize_by_prefix(token, keywords):
     """
     norm_token = token
     for kw in keywords:
-        cond = token.startswith(kw) and token != kw and norm_token == None
+        # Ngecek kalo ada ga kata yang sama depanya dengan token dan milih yang paling besar len-nya
         cond_norm = (len(kw) > len(norm_token)) or (token == norm_token)
-        # if token.startswith(kw) and token != kw and token == norm_token:
-        # norm_token = kw
         if token.startswith(kw) and token != kw and cond_norm:
-            print(f"before kws : {kw}")
-            print(f"norm_token : {norm_token}, {cond}")
-            print(f"\nterpisah cond 1\n")
             norm_token = kw
-            print(f"after norm_token : {norm_token}")
     return norm_token
 
 
@@ -348,7 +342,7 @@ def analyze_single_review_complete(ASPECT_KEYWORDS, text, models_tuple):
                 aspect_sentiment_store[aspect_name].append(
                     {"prob": pos_prob, "trigger": trigger_word}
                 )
-
+    print(f"aspect_sentiment_store : {aspect_sentiment_store}")
     # 4. Aggregasi Hasil Aspek (Average & Logic)
     final_aspects_output = {}
 
@@ -374,7 +368,7 @@ def analyze_single_review_complete(ASPECT_KEYWORDS, text, models_tuple):
                 "score": score,
                 "trigger": trigger_str,
             }
-
+    print(f"final_aspects_output : {final_aspects_output}")
     # 5. Global Sentiment Prediction (Text Utuh)
     clean_global = clean_text_advanced(ASPECT_KEYWORDS, text, lang, use_stemming=True)
     global_prob = get_bert_prob(clean_global, model, tokenizer, lang)
