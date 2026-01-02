@@ -12,7 +12,8 @@ import os
 # 0. ASSETS & ICONS SETUP (LOCAL FILES)
 # ==========================================
 
-ICON_DIR = "icons"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ICON_DIR = os.path.join(BASE_DIR, "icons")
 
 # Ensure you have these files in your 'icons/' folder
 # I have mapped generic names to specific usage
