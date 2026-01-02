@@ -12,13 +12,11 @@ import os
 # 0. ASSETS & ICONS SETUP (LOCAL FILES)
 # ==========================================
 
+# Dapetin path project buat icon nanti
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 ICON_DIR = os.path.join(PROJECT_ROOT, "icons")
-
-# Ensure you have these files in your 'icons/' folder
-# I have mapped generic names to specific usage
 ICONS = {
     "menu": os.path.join(ICON_DIR, "menu.png"),
     "home": os.path.join(ICON_DIR, "home.png"),
@@ -35,18 +33,6 @@ ICONS = {
     "rocket": os.path.join(ICON_DIR, "rocket.png"),
     "time": os.path.join(ICON_DIR, "clock.png"),  # Generic clock icon
 }
-
-st.write("BASE_DIR:", BASE_DIR)
-st.write("ICON_DIR exists:", os.path.exists(ICON_DIR))
-st.write("PROJECT_ROOT:", PROJECT_ROOT)
-st.write("menu.png exists:", os.path.exists(ICONS["menu"]))
-st.write(
-    "files in ICON_DIR:", os.listdir(ICON_DIR) if os.path.exists(ICON_DIR) else "NO DIR"
-)
-st.write(
-    "files in app/:",
-    os.listdir(PROJECT_ROOT) if os.path.exists(PROJECT_ROOT) else "NO DIR",
-)
 
 
 def get_img_as_base64(file_path):
