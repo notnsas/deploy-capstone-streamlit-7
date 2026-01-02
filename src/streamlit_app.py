@@ -34,6 +34,13 @@ ICONS = {
     "time": os.path.join(ICON_DIR, "clock.png"),  # Generic clock icon
 }
 
+st.write("BASE_DIR:", BASE_DIR)
+st.write("ICON_DIR exists:", os.path.exists(ICON_DIR))
+st.write("menu.png exists:", os.path.exists(ICONS["menu"]))
+st.write(
+    "files in ICON_DIR:", os.listdir(ICON_DIR) if os.path.exists(ICON_DIR) else "NO DIR"
+)
+
 
 def get_img_as_base64(file_path):
     """
