@@ -512,6 +512,7 @@ elif menu == "Analisis File (Batch)":
                                 st.session_state["ASPECT_KEYWORDS"],
                                 text,
                                 (models_en, models_id),
+                                lang,
                             )
                         )
                         res_row = {
