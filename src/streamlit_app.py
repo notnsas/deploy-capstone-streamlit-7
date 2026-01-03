@@ -480,6 +480,24 @@ elif menu == "Analisis File (Batch)":
 
                 st.success(f"File berhasil dimuat! **{len(df)}** baris.")
 
+                st.markdown("##### Konfigurasi Bahasa")
+
+                lang_option = st.radio(
+                    "Pilih Bahasa Dominan:",
+                    ["Auto-Detect", "Indonesia", "English"],
+                    index=0,
+                    horizontal=True,
+                    help="Pilih 'Auto-Detect' jika data tercampur.",
+                )
+
+                # Memasukkan pilihan ke variabel 'lang'
+                if "Indonesia" in lang_option:
+                    lang = "id"
+                elif "English" in lang_option:
+                    lang = "en"
+                else:
+                    lang = "auto"
+
                 if st.button("Jalankan Analisis AI (Batch)", type="primary"):
                     progress_text = "Memproses ulasan..."
                     my_bar = st.progress(0, text=progress_text)
@@ -568,10 +586,30 @@ elif menu == "Dokumentasi & Panduan":
     with tab_guide:
         st.header("Panduan Penggunaan")
 
-        with st.expander("Analisis Teks (Single)"):
-            st.write("Masukkan kalimat, klik tombol analisis, lihat hasil.")
-        with st.expander("Analisis File (Batch)"):
-            st.write("Upload CSV, klik jalankan, download hasil.")
+        with st.expander("Cara Melakukan Analisis Teks (Single)"):
+            st.markdown(
+                """
+            1. Pergi ke menu **Analisis Teks (Single)** di sidebar.
+            2. Masukkan kalimat ulasan/review pada kolom teks yang tersedia.
+            3. Klik tombol **🔍 Analisis Sekarang**.
+            4. Sistem akan menampilkan:
+               - **Sentimen Global:** Apakah ulasan tersebut secara umum Positif atau Negatif.
+               - **Deteksi Aspek:** AI akan memecah kalimat dan mendeteksi aspek spesifik (misal: Audio, Harga, Iklan).
+            5. Anda juga bisa **menambahkan keyword baru** di bagian bawah halaman hasil analisis jika AI melewatkan sesuatu.
+            """
+            )
+        with st.expander("Cara Melakukan Analisis File (Batch)"):
+            st.markdown(
+                """
+            1. Siapkan file data dalam format **CSV** atau **Excel (.xlsx)**.
+            2. Pastikan file memiliki kolom teks (misal: `content`, `review`, `text`, atau `ulasan`).
+            3. Pergi ke menu **Analisis File (Batch)**.
+            4. Upload file Anda ke area yang disediakan.
+            5. Klik tombol **Jalankan Analisis AI**.
+            6. Tunggu proses selesai (Progress bar akan berjalan).
+            7. Lihat **Dashboard Visualisasi** atau download hasil lengkapnya via tombol **Download CSV**.
+            """
+            )
 
     with tab_dict:
         st.header("Daftar Keyword")

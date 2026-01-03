@@ -267,7 +267,7 @@ def get_smart_aspects(ASPECT_KEYWORDS, segment, lang):
     return detected
 
 
-def analyze_single_review_complete(ASPECT_KEYWORDS, text, models_tuple):
+def analyze_single_review_complete(ASPECT_KEYWORDS, text, models_tuple, lang=None):
     """
     PIPELINE UTAMA ABSA END-TO-END
     Menerima teks -> Cleaning -> Split Segmen -> Deteksi Aspek -> Scoring BERT.
@@ -277,7 +277,8 @@ def analyze_single_review_complete(ASPECT_KEYWORDS, text, models_tuple):
     if not models_en or not models_id:
         return "Error", 0.0, {}, "en"
 
-    lang = detect_language(text)
+    if lang == None:
+        lang = detect_language(text)
 
     # Load pasangan model & tokenizer yang tepat
     if lang == "id":
