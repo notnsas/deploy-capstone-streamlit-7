@@ -98,19 +98,30 @@ st.set_page_config(
 )
 
 # --- CUSTOM CSS ---
+# --- CUSTOM CSS (HALODOC THEME) ---
 st.markdown(
     """
 <style>
+    /* 1. VARIABEL WARNA (Berdasarkan Screenshot Halodoc) */
     :root {
-        --primary-color: #1DB954;
-        --bg-color: #121212;
-        --secondary-bg: #191414;
-        --text-color: #FFFFFF;
+        --primary-color: #E0004D;    /* Pink Halodoc */
+        --bg-color: #1A1A2E;         /* Dark Navy Background */
+        --card-bg: #262641;          /* Lighter Purple for Cards */
+        --text-color: #FFFFFF;       /* White Text */
+        --text-gray: #A0A0B0;        /* Gray for labels */
+        --accent-green: #00C853;     /* Positive */
+        --accent-red: #D50000;       /* Negative */
     }
     
+    /* 2. BACKGROUND APLIKASI */
     .stApp {
         background-color: var(--bg-color);
         color: var(--text-color);
+    }
+
+    /* Sidebar Background */
+    section[data-testid="stSidebar"] {
+        background-color: #141424; /* Lebih gelap dari main content */
     }
     
     h1, h2, h3 {
@@ -118,63 +129,93 @@ st.markdown(
         font-family: 'Helvetica', sans-serif;
     }
     
-    /* Metric styling */
+    /* 3. METRIC CARD (KOTAK ANGKA) */
     div[data-testid="stMetric"] {
-        background-color: var(--secondary-bg);
-        border: 1px solid #333;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        background-color: var(--card-bg);
+        border: none;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+    
+    /* Label Metric (Total Ulasan, dll) - Warna abu-abu/ungu muda */
     div[data-testid="stMetricLabel"] {
-        color: #b3b3b3;
+        color: var(--text-gray);
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 600;
     }
+    
+    /* Value Metric (Angka Besar) - Warna Pink sesuai screenshot */
     div[data-testid="stMetricValue"] {
-        color: var(--primary-color);
+        color: #FF2E63; /* Bright Pink */
         font-weight: bold;
+        font-size: 36px;
     }
 
-    /* Button styling */
+    /* 4. BUTTON STYLING */
     div.stButton > button {
         background-color: var(--primary-color);
         color: white;
-        border-radius: 20px;
+        border-radius: 8px;
         font-weight: bold;
         border: none;
         padding: 10px 24px;
+        transition: all 0.3s ease;
     }
     div.stButton > button:hover {
-        background-color: #1ed760;
-        border: 1px solid white;
+        background-color: #ff407b; /* Pink lebih terang saat hover */
+        box-shadow: 0 4px 12px rgba(224, 0, 77, 0.4);
     }
 
-    /* Card styling */
+    /* 5. ASPECT CARD STYLING (Diubah agar cocok dengan tema ungu) */
+    /* Positif */
     .aspect-card-pos {
-        background-color: #0d2e18;
-        border-left: 5px solid #1DB954;
+        background-color: #1E3A2F; /* Dark Green bg */
+        border-left: 5px solid var(--accent-green);
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 10px;
     }
+    /* Negatif */
     .aspect-card-neg {
-        background-color: #3b0d10;
-        border-left: 5px solid #ff4d4d;
+        background-color: #3E1E24; /* Dark Red bg */
+        border-left: 5px solid var(--accent-red);
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 10px;
     }
+    /* Netral */
     .aspect-card-neutral {
-        background-color: #2b2b2b;
+        background-color: var(--card-bg);
         border-left: 5px solid #666666;
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 10px;
-        opacity: 0.7;
+        opacity: 0.8;
     }
+    
     .trigger-text {
         font-size: 0.85em;
-        color: #b3b3b3;
+        color: #A0A0B0;
         font-style: italic;
+    }
+
+    /* Expander & Tabs adjustment */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 24px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border-radius: 4px;
+        color: var(--text-gray);
+        font-weight: 600;
+    }
+    .stTabs [aria-selected="true"] {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
     }
 </style>
 """,
